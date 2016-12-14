@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0412</title>
+	<style>
+		a{
+			text-decoration: none
+		}
+	</style>
+</head>
+<body>
+	<form action="0412.php" method="post" name="form1" id="form">
+		<table align="center">
+			<tr align="center">
+				<td colspan="19" width="100%">
+					<img src="img/0412banner.jpg" alt="0412banner" width="100%"></td>
+			</tr>
+			<tr align="center" >
+				<td >
+					<a href="#">网站首页</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">关于我们</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">新闻中心</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">经典设计</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">服务流程</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">装修知识</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">人才招聘</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">公司论坛</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">网上留言</a>
+				</td>
+				<td>丨</td>
+				<td>
+					<a href="#">联系我们</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="19" height="30"></td>
+			</tr>
+			<tr >
+				<td colspan="5" >
+					<table align="center" width="100%" cellpadding="10">
+						<tr align="center" >
+							<td></td>
+							<td  background="img/daohang.jpg"  height="50" align="100%">栏目导航</td>
+						</tr>
+						<tr align="center">
+							<td>→</td>
+							<td>
+								公司简介
+								<hr></td>
+						</tr>
+						<tr align="center">
+							<td>→</td>
+							<td>
+								经理致辞
+								<hr></td>
+						</tr>
+						<tr align="center">
+							<td>→</td>
+							<td>
+								企业文化
+								<hr></td>
+						</tr>
+						<tr align="center">
+							<td>→</td>
+							<td>
+								企业荣誉
+								<hr></td>
+						</tr>
+						<tr align="center">
+							<td>→</td>
+							<td>
+								服务流程
+								<hr></td>
+						</tr>
+						<tr align="center">
+							<td>→</td>
+							<td>
+								联系我们
+								<hr></td>
+						</tr>
+					</table>
+				</td>
+				<td colspan="14" bgcolor="#d6d6d6" align="center" >
+					<table align="center" cellpadding="13">
+						<tr>
+							<td colspan="2" bgcolor="#1104bb" style="color: #ffffff" height="30" align="center" >◎网上留言</td>
+						</tr>
+						<tr>
+							<td>户主姓名：</td>
+							<td>
+								<input type="text" name="name"></td>
+						</tr>
+						<tr>
+							<td>装修范围：</td>
+							<td>
+								<input type="checkbox" name="range[]" value="客厅">
+								客厅
+								<input type="checkbox" name="range[]" value="卧室">
+								卧室
+								<input type="checkbox" name="range[]" value="厨房">
+								厨房
+								<input type="checkbox" name="range[]" value="室外">室外</td>
+						</tr>
+						<tr>
+							<td>建筑面积：</td>
+							<td>
+								<input type="radio" name="area" value="120">
+								120平米
+								<input type="radio" name="area" value="150">150平米</td>
+						</tr>
+						<tr>
+							<td>装修风格：</td>
+							<td>
+								<select name="style" id="">
+									<option value="现代风格">现代风格</option>
+									<option value="唐代风格">唐代风格</option>
+									<option value="欧式风格">欧式风格</option>
+									<option value="美式风格">美式风格</option>
+									<option value="英式风格">英式风格</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>装修说明：</td>
+							<td>
+								<textarea name="explain" id="" cols="60" rows="5"></textarea>
+							</td>
+						</tr>
+						<tr align="center">
+							<td colspan="2">
+								<input type="submit" value="提交">
+								<input type="reset" name="reset" value="重置"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td height="35"></td>
+			</tr>
+			<tr align="center" bgcolor="#85bcff">
+				<td colspan="19" height="35">Copyrigth &copy; 版权所有</td>
+			</tr>
+		</table>
+	</form>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/requestAjax.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+		$("#form").submit(function() {
+			var params = $(this).serializeJson();
+			console.log(params);
+			if(!params.name){
+				alert("请输入户主姓名");
+				return false;
+			}
+			if(!params['range[]']){
+				alert("请选择装修范围");
+				return false;
+			}
+			if(!params.area){
+				alert("请选择装修面积");
+				return false;
+			}
+			if(!params.style){
+				alert("请选择装修风格");
+				return false;
+			}
+			if(!params.explain){
+				alert("请输入装修说明");
+				return false;
+			}
+			return true;
+		});
+	</script>
+</body>
+</html>

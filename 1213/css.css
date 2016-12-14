@@ -1,0 +1,13 @@
+img{
+	/*float: left;*/
+	/*margin: 30px;*/
+	width: 150px;
+	margin-top: -90px;
+}
+.sec{
+	background: #eee;
+	padding: 10px 50px 30px;
+	margin-top: 150px;
+	position: relative;
+	border-top: 10px solid #399;
+}

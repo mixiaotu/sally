@@ -1,0 +1,30 @@
+ul{
+	margin: 0;
+	padding: 0;
+	/*list-style-image: url("img/check1.png");
+	list-style-position: inside;*/
+  	/*宝贝，说实在的，如果要做这个效果，用list-style-image是不合理也很麻烦的
+  	而且用图片处理的话不兼容很多浏览器，也无法自适应屏幕尺寸的变化
+  	所以一般这种效果都是用字体图标来处理的*/
+}
+li{
+	background: #c0392b;
+	color: #00f;
+	padding: 15px;
+	margin: 5px 0;
+	/*text-indent: 35px;*/
+	box-sizing: border-box;
+	width: 22%;
+	float: left;
+	margin-right: 4%;
+	min-width: 120px;
+	padding-left: -10px;
+	list-style: none;
+	font-size: 30px;
+}
+li:last-child{
+	margin-right: 0;
+}
+li:hover{
+	background-color: #000;
+}

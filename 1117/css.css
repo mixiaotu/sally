@@ -1,0 +1,12 @@
+body{
+	background: #f00;
+}
+h1{
+	text-shadow: -1px -1px 0px rgba(0,0,0,.7)
+}
+#box{
+	width: 200px;
+	height: 200px;
+	background: #fff;
+	box-shadow: 10px 10px 10px 5px rgba(0,0,0,.5) inset;
+}

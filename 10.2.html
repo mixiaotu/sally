@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10.2</title>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		#banner{
+			width: 100%;
+			background: green;
+		}
+		.p1{
+			font-family: 微软雅黑;
+			font-size: 40px;
+			padding: 75px 0px 0px 550px ;
+			color: #fff;
+		}
+		.p2{
+			font-family: 微软雅黑;
+			font-size: 40px;
+			padding: 0px 0px 50px 800px;
+			color: #fff;
+		}
+		#banner ul{
+			width: 100%;
+			height: 40px;
+			list-style: none;
+			background: #30a02e;
+		}
+		#banner ul li{
+			float: left;
+			width: 9.951%;
+			text-align: center;
+			color: #fff;
+			line-height: 40px;
+			border-right: solid 1px; 
+		}
+		#banner ul li:last-child{
+			border-right: none;
+		}
+		#banner ul li a{
+			text-decoration: none;
+			color: #fff;
+			display: block;
+		}
+		#banner ul li a:hover{
+			color: #30a02e;
+			background-color: #fff;
+		}
+		#leftnav{
+			width: 30%;
+			background-color: #d3d3d3;
+			float: left;
+		}
+		#leftnav a{
+			display: block;
+			height: 80px;
+			background-color: #a9a9a9;
+			text-decoration: none;
+			text-align: center;
+			line-height: 80px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #000;
+		}
+		#leftnav ul{
+			list-style-type: square;
+			line-height: 60px;
+		}
+		.leftnav li{
+			text-align:center;
+		}
+		.triangle{
+			width: 0px;
+			height: 0px;
+			overflow: hidden;
+			border-width: 10px;
+			border-color: transparent transparent transparent green;
+			border-style: dashed dashed dashed solid;
+		}
+		/*#rightform{
+			width: 70%;
+		}*/
+		#rightheader{
+			width: 100%;
+			height: 40px;
+			background-color: green;
+			color: #fff;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div id="banner">
+		<p class="p1">专业铸就诚信</p>
+		<p class="p2">我们只做您满意的工程</p>
+		<ul>
+			<li><a href="#">网站首页</a></li>
+			
+			<li><a href="#">关于我们</a></li>
+			
+			<li><a href="#">新闻中心</a></li>
+			
+			<li><a href="#">经典设计</a></li>
+			
+			<li><a href="#">服务流程</a></li>
+			
+			<li><a href="#">装修知识</a></li>
+			
+			<li><a href="#">人才招聘</a></li>
+			
+			<li><a href="#">公司论坛</a></li>
+			
+			<li><a href="#">网上留言</a></li>
+			
+			<li><a href="#">联系我们</a></li>
+		</ul>
+	</div>
+	<div id="leftnav">
+		<a href="#">栏目导航</a>
+		<ul class="leftnav">
+			<li><span class="triangle"></span>公司简介</li><hr>
+			<li><span class="triangle"></span>经理致辞</li><hr>
+			<li><span class="triangle"></span>企业文化</li><hr>
+			<li><span class="triangle"></span>企业荣誉</li><hr>
+			<li><span class="triangle"></span>服务流程</li><hr>
+			<li><span class="triangle"></span>联系我们</li><hr>
+		</ul>
+	</div>
+	<div id="rightform">
+		<div id="rightheader">
+			<p>网上留言</p>
+		</div>
+		<div>
+			<form name="form1" method="post" action="">
+				<label >户主姓名</label>
+				<div>
+					<input type="text"/>
+				</div>
+				<label >装修面积</label>
+				<div>
+					<input type="checkbox" name="checkbox1" value="checkbox">客厅
+					<input type="checkbox" name="checkbox2" value="checkbox">卧室
+					<input type="checkbox" name="checkbox3" value="checkbox">厨房
+					<input type="checkbox" name="checkbox4" value="checkbox">室外
+				</div>
+				<label >建筑面积</label>
+				<div>
+				<input type="radio" name="measure">男
+				<input type="radio" name="measure">女
+				</div>
+				<label >装修风格</label>
+				<div>
+					<select name="style" id="">
+						<option value="现代风格" selected="selected">现代风格</option>
+						<option value="古代风格">古代风格</option>
+						<option value="欧式风格">欧式风格</option>
+					</select>
+				</div>
+				<label >装修说明</label>
+				<div>
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+				</div>
+				<div>
+					<input type="submit" value="提交">
+					<input type="reset" value="重置">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

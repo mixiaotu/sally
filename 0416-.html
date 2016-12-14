@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>div</title>
+	<style type="text/css">
+		#button{
+			width: 150px;
+			border-right: 1px solid #000;
+			padding: 0 0 lem 0;
+			margin-bottom: lem;
+			font-family: 微软雅黑;
+			font-size: 13px;
+			background-color: #ff9933;
+			color: #000000;
+			text-align: center;
+		}
+		#button ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		#button li{
+			margin: 0;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			border-bottom-color: #ffff00;
+		}
+		#button li a{
+			display: block;
+			padding: 5px 5px 5px 0.5em;
+			background-color: #ff9933;
+			color: #fff;
+			text-decoration: none;
+			width: 100%;
+			border-right-width: 10px;
+			border-left-width: 10px;
+			border-right-style: solid;
+			border-left-style: solid;
+			border-right-color: #ffcc00;
+			border-left-color: #ffcc00;
+		}
+		html>body #button li a{
+			width: auto;
+		}
+		button li a:hover{
+			background-color: #ffcc00;
+			color: #fff;
+			border-right-width: 10px;
+			border-left-width: 10px;
+			border-right-style: solid;
+			border-left-style: solid;
+			border-right-color: #ff00ff;
+			border-left-color: #ff00ff;
+		}
+		#n li{
+			float: left;
+			list-style: none;
+		}
+		#n li a{
+			color: #ffffff;
+			text-decoration: none;
+			padding-top: 4px;
+			display: block;
+			width: 65px;
+			height: 20px;
+			text-align: center;
+			background-color: #6600cc;
+			margin-left: 2px;
+		}
+		#n li a:hover{
+			background-color: #9999ff;
+			color: #ffffff;
+		}
+		.ann{
+			border: 2px solid red;
+			color: #6600ff;
+			font-size: 9pt;
+			font-style: normal;
+		}
+		.name{
+			border: 2px solid red;
+			background: yellow;
+		}
+		.jianbian img{
+			filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+			-moz-opacity:0.5;
+		}
+		.jianbian:hover img{
+			filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+			-moz-opacity:1;
+		}
+	</style>
+</head>
+<body>
+	<div id="button">
+		<ul>
+			<li><a href="#">首页</a></li>
+			<li><a href="#">公司频道</a></li>
+			<li><a href="#">最新动态</a></li>
+			<li><a href="#">客房介绍</a></li>
+			<li><a href="#">酒店服务</a></li>
+			<li><a href="#">休闲娱乐</a></li>
+			<li><a href="#">旅行社</a></li>
+		</ul>
+	</div>
+	<div id="n">
+		<ul>
+			<li><a href="#">酒店概况</a></li>
+			<li><a href="#">客房</a></li>
+			<li><a href="#">餐饮</a></li>
+			<li><a href="#">商务会议</a></li>
+			<li><a href="#">酒店服务</a></li>
+			<li><a href="#">订房表</a></li>
+			<li><a href="#">友情链接</a></li>
+		</ul>
+	</div>
+	<br><br><br><br>
+	<!-- 这是表单 -->
+	<div>
+		用户名：
+		<input type="text" class="name"><br>
+		密&nbsp;码：
+		<input type="password"><br>
+		<input type="submit" value="登录" name="submit" class="ann">
+		<input type="reset" value="重置" name="submit" class="ann">
+	</div>
+	<div>
+		<img src="img/lake.jpg" alt="" width="30%" class="jianbian">
+	</div>
+</body>
+</html>

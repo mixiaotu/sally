@@ -1,0 +1,13 @@
+@font-face{
+	font-family: 'my-icon-font';
+	src:url('my-icon-font.ttf'),url('my-icon-font.eot'), url('my-icon-font.woff');
+}
+h1{
+	font-weight: normal;
+	text-shadow: 8px 10px 0 rgba(0,0,0,.2);
+}
+h1:before{
+	font-family: 'my-icon-font';
+	content: "\e63f";
+	margin-right: 20px;
+}
