@@ -18,6 +18,9 @@
             returnMsg(-1,"用户名或密码错误");
         }
         $user = $response['data'];
+        if(substr($user['avatar'],0,4) != "http"){
+            $user['avatar'] = "https://coding.net".$user['avatar'];
+        }
         session('user',$user);
         $url = "https://coding.net/api/user/banshan/project/sally";
         $response = json_decode(http("get",$url,null,$cookie),true);
