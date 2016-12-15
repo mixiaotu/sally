@@ -9,7 +9,10 @@
     $filenames = scandir($dir);
     foreach ($filenames as $key => $file) {
         if(substr($file,0,1) != "."){
-            $file = iconv('GB2312', 'UTF-8', $file);
+            $encode = mb_detect_encoding($file, array("ASCII","UTF-8","GB2312","GBK","BIG5")); 
+            if ($encode != "UTF-8"){ 
+                $file = iconv($encode, 'UTF-8', $file);
+            } 
             $path = $dir.'/'.$file;
             if(is_dir($path)){
                 $dirs[] = $file;
