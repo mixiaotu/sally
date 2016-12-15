@@ -1,44 +1,24 @@
 <?php
+    include_once("./function.php");
     header("Content-type: text/html; charset=utf-8"); 
     $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$_GET['dir'];
     $dh = @opendir($dir);
     while($file = @readdir($dh)){
         if(substr($file,0,1) != "."){
             $path = $dir.'/'.$file;
-            $filetime[] = filectime($path); 
-            $files[] =  $file;
+            if(is_dir($path)){
+                $dirs[] = $file;
+            }else{
+                $files[] =  $file;
+            }
         }
     }  
     @closedir($dh);
-    array_multisort($filetime,SORT_DESC,SORT_NUMERIC, $files);
+    rsort($dirs);
+    rsort($files);
+    $files = safe_array_merge($dirs,$files);
     $filter_array = array(".","..","index.php",".svn","res");
     $vsfiles = array_diff($files,$filter_array);
-
-    function format_date($time) {
-	    $nowtime = time();
-	    $difference = $nowtime - $time;
-	    switch ($difference) {
-	        case $difference <= '60' :
-	            $msg = '刚刚';
-	            break;
-	        case $difference > '60' && $difference <= '3600' :
-	            $msg = floor($difference / 60) . '分钟前';
-	            break;
-	        case $difference > '3600' && $difference <= '86400' :
-	            $msg = floor($difference / 3600) . '小时前';
-	            break;
-	        case $difference > '86400' && $difference <= '2592000' :
-	            $msg = floor($difference / 86400) . '天前';
-	            break;
-	        case $difference > '2592000' &&  $difference <= '7776000':
-	            $msg = floor($difference / 2592000) . '个月前';
-	            break;
-	        case $difference > '7776000':
-	            $msg = '很久以前';
-	            break;
-	    }
-	    return $msg;
-	}
 ?>
 <html>
 <head>
@@ -48,8 +28,8 @@
     <!--[if lte IE 9]>
     <script type="text/javascript">location.href = '/unsupport-browser.html';</script>
     <![endif]-->
-    <link rel="stylesheet" href="./res/vendor.css">
-    <link rel="stylesheet" href="./res/app.css">
+    <link rel="stylesheet" href="/res/vendor.css">
+    <link rel="stylesheet" href="/res/app.css">
     <style type="text/css">
         body{margin: 0;padding: 0;}
         .wrapper{width: 80%;margin: 0 10%;}
@@ -71,13 +51,31 @@
                                     </a>
                                 </div>
                                 <div class="nav-breadcrumb">
-                                    <a class="active section" href="https://coding.net/u/banshan/p/sally/git/tree/master">sally</a>
+                                    <a class="active section" href="/">sally</a>
                                     <div class="divider">/</div>
-                                    <span ref="ref" path="path" context="tree">
-                                        <span class="active section" style="display: inherit;">
-                                            <span class="active section ng-binding"><?php echo $_GET['dir']; ?></span>
+                                    <?php 
+                                        $prearr = explode("/",rtrim($_GET['dir'],'/'));
+                                        $_pre = "";
+                                        foreach ($prearr as $key => $prepath) {
+                                            if($key == count($prearr)-1){
+                                    ?>
+                                        <span ref="ref" path="path" context="tree">
+                                            <span class="active section" style="display: inherit;">
+                                                <span class="active section ng-binding">
+                                                    <?php echo $prepath?>
+                                                </span>
+                                            </span>
                                         </span>
-                                    </span>
+                                    <?php 
+                                            }else{
+                                            $_pre[] = $prepath;
+                                    ?>
+                                        <a class="active section" href="/<?php echo implode("/",$_pre)?>"><?php echo $prepath?></a>
+                                        <div class="divider">/</div>
+                                    <?php 
+                                            }
+                                        }
+                                    ?>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -88,10 +86,10 @@
                                 <time title="2016-12-14 16:39:43"><?php echo format_date(filemtime($dir));?></time>
                             </span>
                             <span class="commit-author-section">
-                                <a ng-href="/u/banshan" href="https://coding.net/u/banshan">
-                                    <img class="author-gravatar" alt="@Jormin" width="20" height="20" src="./res/0a08a0d2d25e888a868b6e36dae450d6.jpg"></a>
+                                <a href=javascript:;>
+                                    <img class="author-gravatar" alt="@Jormin" width="20" height="20" src="/res/0a08a0d2d25e888a868b6e36dae450d6.jpg"></a>
                                 <span class="author-name">
-                                    <a href="https://coding.net/u/banshan" title="Jormin">Jormin</a>
+                                    <a href=javascript:; title="Jormin">Jormin</a>
                                 </span>
                             </span>
                         </div>
@@ -100,11 +98,21 @@
                                 <tbody>
                                     <?php
                                         if($_GET['dir'] && !in_array($_GET['dir'],array('/','..'))){
+                                            $prearr = explode("/",rtrim($_GET['dir'],'/'));
+                                            array_pop($prearr);
+                                            if(count($prearr) > 0){
+                                                $prepath = implode("/",$prearr);
+                                            }else{
+                                                $prepath = "/";
+                                            }
+                                            if(substr($prepath,0,1) != "/"){
+                                                $prepath = "/".$prepath;
+                                            }
                                     ?>
-                                        <tr>
+                                        <tr class="file-item" data-val="<?php echo $prepath?>" data-type="dir">
                                             <td class="content">
                                                 <span class="truncate truncate-target">
-                                                    <a href="https://coding.net/u/banshan/p/sally/git/tree/master/">
+                                                    <a class="file-item-a" href="javascript:;">
                                                         <i class="reply mail icon"></i>
                                                         ..
                                                     </a>
@@ -127,13 +135,13 @@
                                             $fileperms = fileperms($path);
                                             if(is_dir($path)){
                                     ?>
-                                        <tr  class="file-item" data-val="<?php echo $file?>">
+                                        <tr class="file-item" data-val="<?php echo $file?>" data-type="dir">
                                             <td class="icon">
                                                 <i class="folder icon"></i>
                                             </td>
                                             <td class="content">
                                                 <span class="truncate truncate-target">
-                                                    <a cg-ref="ref" href="javascript:;" title="<?php echo $file?>"><?php echo $file?></a>
+                                                    <a class="file-item-a" href="javascript:;" title="<?php echo $file?>"><?php echo $file?></a>
                                                 </span>
                                             </td>
                                             <td class="age">
@@ -142,31 +150,31 @@
                                             <td class="committer">
                                                 <span class="truncate truncate-target">
 
-                                                    <a href="https://coding.net/u/banshan">
-                                                        <img class="author-gravatar" src="./res/0a08a0d2d25e888a868b6e36dae450d6.jpg" title="Jormin" width="20" height="20"></a>
+                                                    <a href=javascript:;>
+                                                        <img class="author-gravatar" src="/res/0a08a0d2d25e888a868b6e36dae450d6.jpg" title="Jormin" width="20" height="20"></a>
                                                 </span>
                                             </td>
                                             <td class="name">
                                                 <span class="truncate truncate-target">
-                                                    <a href="https://coding.net/u/banshan">Jormin</a>
+                                                    <a href=javascript:;>Jormin</a>
                                                 </span>
                                             </td>
                                             <td class="message">
                                                 <span class="truncate truncate-target">
-                                                    <a href="https://coding.net/u/banshan/p/sally/git/commit/aa37d6040b1d748497fb5163ea47f8b4e73d33dc"><?php echo "create on ".$filectime; ?></a>
+                                                    <a href="javascript:;"><?php echo "create on ".$filectime; ?></a>
                                                 </span>
                                             </td>
                                         </tr>
                                     <?php
                                             }else{
                                     ?>
-                                        <tr class="file-item" data-val="<?php echo $file?>">
+                                        <tr class="file-item" data-val="<?php echo $file?>" data-type="file">
                                             <td class="icon">
                                                 <i class="file outline icon"></i>
                                             </td>
                                             <td class="content">
                                                 <span class="truncate truncate-target">
-                                                    <a cg-ref="ref" href="javascript:;" title="<?php echo $file?>"><?php echo $file?></a>
+                                                    <a class="file-item-a" href="javascript:;" title="<?php echo $file?>"><?php echo $file?></a>
                                                 </span>
                                             </td>
                                             <td class="age">
@@ -175,18 +183,18 @@
                                             <td class="committer">
                                                 <span class="truncate truncate-target">
 
-                                                    <a href="https://coding.net/u/banshan">
-                                                        <img class="author-gravatar" src="./res/0a08a0d2d25e888a868b6e36dae450d6.jpg" title="Jormin" width="20" height="20"></a>
+                                                    <a href=javascript:;>
+                                                        <img class="author-gravatar" src="/res/0a08a0d2d25e888a868b6e36dae450d6.jpg" title="Jormin" width="20" height="20"></a>
                                                 </span>
                                             </td>
                                             <td class="name">
                                                 <span class="truncate truncate-target">
-                                                    <a href="https://coding.net/u/banshan">Jormin</a>
+                                                    <a href=javascript:;>Jormin</a>
                                                 </span>
                                             </td>
                                             <td class="message">
                                                 <span class="truncate truncate-target">
-                                                    <a href="https://coding.net/u/banshan/p/sally/git/commit/aa37d6040b1d748497fb5163ea47f8b4e73d33dc"><?php echo "create on ".$filectime; ?></a>
+                                                    <a href="javascript:;"><?php echo "create on ".$filectime; ?></a>
                                                 </span>
                                             </td>
                                         </tr>
@@ -203,7 +211,7 @@
         </div>
     </div>
     <div id="cli_dialog_div"></div>
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/res/jquery.min.js"></script>
     <script type="text/javascript">
         var height = $(window).height() - parseInt($("#lefttree").css("padding-top"))-$("#lefttree").find(".panel-heading").height()-parseInt($("#filelist").css("padding-top"))*2-15;
         $("#filelist").css("max-height",height);
@@ -217,17 +225,18 @@
                 }
             })
         })
-        $(document).on("click",".file-item",function(){
-            var type = $(this).data("type");
-            var val = $(this).data("val");
+        $(document).on("click",".file-item-a",function(){
+            var type = $(this).closest('tr').data("type");
+            var val = $(this).closest('tr').data("val");
             if(type == "dir"){
                 if(val == ".."){
-                    window.location.href = window.location.href+val;
+                    // window.location.href = window.location.href+val;
                 }else{
-                    window.location.href = window.location.href+val;
+                    // console.log(window.location.href+val);
+                    window.location.href = val;
                 }
             }else{
-
+                window.open(val)
             }
         })
     </script>
