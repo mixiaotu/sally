@@ -24,7 +24,7 @@
     rsort($dirs);
     rsort($files);
     $files = safe_array_merge($dirs,$files);
-    $filter_array = array(".","..","index.php",".svn","res","lib");
+    $filter_array = array(".","..","index.php","login.php","logout.php",".svn","res","lib");
     $vsfiles = array_diff($files,$filter_array);
 ?>
 <html>
