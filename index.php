@@ -6,9 +6,10 @@
     $user = session('user');
     header("Content-type: text/html; charset=utf-8"); 
     $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$_GET['dir'];
-    $dh = @opendir($dir);
-    while($file = @readdir($dh)){
+    $filenames = scandir($dir);
+    foreach ($filenames as $key => $file) {
         if(substr($file,0,1) != "."){
+            $file = iconv('GB2312', 'UTF-8', $file);
             $path = $dir.'/'.$file;
             if(is_dir($path)){
                 $dirs[] = $file;
@@ -16,8 +17,7 @@
                 $files[] =  $file;
             }
         }
-    }  
-    @closedir($dh);
+    }
     rsort($dirs);
     rsort($files);
     $files = safe_array_merge($dirs,$files);
