@@ -1,5 +1,5 @@
 <?php
-    include_once("./function.php");
+    include_once("./lib/function.php");
     header("Content-type: text/html; charset=utf-8"); 
     $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$_GET['dir'];
     $dh = @opendir($dir);
@@ -17,7 +17,7 @@
     rsort($dirs);
     rsort($files);
     $files = safe_array_merge($dirs,$files);
-    $filter_array = array(".","..","index.php",".svn","res");
+    $filter_array = array(".","..","index.php",".svn","res","lib");
     $vsfiles = array_diff($files,$filter_array);
 ?>
 <html>
