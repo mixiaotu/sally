@@ -86,7 +86,7 @@
                     window.location.href = "/index.php";
                 }else{
                     layer.msg(msg.description,function(){
-                        this.removeAttr("disabled");
+                        _this.removeAttr("disabled");
                     })
                 }
             };
