@@ -28,6 +28,7 @@
         if($cookie){
             curl_setopt($ch, CURLOPT_COOKIE, $cookie);
         }
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         //执行并获取HTML文档内容
         $output = curl_exec($ch);
