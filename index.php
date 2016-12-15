@@ -1,5 +1,9 @@
 <?php
-    include_once("./lib/function.php");
+    include_once("./lib/init.php");
+    if(session("isauth") != 1){
+        redirect("/login.php");
+    }
+    $user = session('user');
     header("Content-type: text/html; charset=utf-8"); 
     $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$_GET['dir'];
     $dh = @opendir($dir);
@@ -49,9 +53,10 @@
                                     <a class="ui small button" href="javascript:;"> <i class="search icon"></i>
                                         <input type="text" class="form-control" placeholder="搜索" id="keyword">
                                     </a>
+                                    <a class="ui small button" href="/logout.php"><i class="sign out icon"></i>退出</a>
                                 </div>
                                 <div class="nav-breadcrumb">
-                                    <a class="active section" href="/">sally</a>
+                                    <a class="active section" href="/"><?php echo $user['name']; ?></a>
                                     <div class="divider">/</div>
                                     <?php 
                                         $prearr = explode("/",rtrim($_GET['dir'],'/'));
@@ -87,9 +92,9 @@
                             </span>
                             <span class="commit-author-section">
                                 <a href=javascript:;>
-                                    <img class="author-gravatar" alt="@Jormin" width="20" height="20" src="/res/0a08a0d2d25e888a868b6e36dae450d6.jpg"></a>
+                                    <img class="author-gravatar" alt="@<?php echo $user['name']; ?>" width="20" height="20" src="<?php echo $user['avatar']; ?>"></a>
                                 <span class="author-name">
-                                    <a href=javascript:; title="Jormin">Jormin</a>
+                                    <a href=javascript:; title="<?php echo $user['name']; ?>"><?php echo $user['name']; ?></a>
                                 </span>
                             </span>
                         </div>
@@ -151,12 +156,12 @@
                                                 <span class="truncate truncate-target">
 
                                                     <a href=javascript:;>
-                                                        <img class="author-gravatar" src="/res/0a08a0d2d25e888a868b6e36dae450d6.jpg" title="Jormin" width="20" height="20"></a>
+                                                        <img class="author-gravatar" src="<?php echo $user['avatar']; ?>" title="<?php echo $user['name']; ?>" width="20" height="20"></a>
                                                 </span>
                                             </td>
                                             <td class="name">
                                                 <span class="truncate truncate-target">
-                                                    <a href=javascript:;>Jormin</a>
+                                                    <a href=javascript:;><?php echo $user['name']; ?></a>
                                                 </span>
                                             </td>
                                             <td class="message">
@@ -184,12 +189,12 @@
                                                 <span class="truncate truncate-target">
 
                                                     <a href=javascript:;>
-                                                        <img class="author-gravatar" src="/res/0a08a0d2d25e888a868b6e36dae450d6.jpg" title="Jormin" width="20" height="20"></a>
+                                                        <img class="author-gravatar" src="<?php echo $user['avatar']; ?>" title="<?php echo $user['name']; ?>" width="20" height="20"></a>
                                                 </span>
                                             </td>
                                             <td class="name">
                                                 <span class="truncate truncate-target">
-                                                    <a href=javascript:;>Jormin</a>
+                                                    <a href=javascript:;><?php echo $user['name']; ?></a>
                                                 </span>
                                             </td>
                                             <td class="message">

@@ -2,6 +2,8 @@
 	RewriteEngine on
 
 	RewriteCond %{REQUEST_URI} !^/index.php
+	RewriteCond %{REQUEST_URI} !^/login.php
+	RewriteCond %{REQUEST_URI} !^/logout.php
 	RewriteCond %{REQUEST_URI} !^/res
 	RewriteCond %{REQUEST_URI} !(.html|.js|.css|.jpg)$
 	RewriteRule ^(.*)$ /index.php?dir=$1 [L]

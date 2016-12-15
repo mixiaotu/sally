@@ -91,3 +91,46 @@
         }
         return $data;
     }
+
+    /**
+     * 页面跳转
+     */
+    function redirect($url){
+        Header("Location: $url"); 
+    }
+
+    /**
+     * 返回数据
+     * @author 谢乔敏
+     * @param  [必需] String  result          结果码[0:成功  -1:失败]
+     * @param  [必需] String  description     结果描述
+     * @param  [可选] Object  data            数据对象
+     * @param  [可选] Int         type            请求验证类型[0:合法  －1:非法]
+     */
+    function returnMsg($result,$description,$data=null,$type=0){
+        $response = array(
+                'data' => $data,
+                'result' => $result,
+                'description' => $description
+            );
+        exit(json_encode($response));
+    }
+
+    /**
+     * 生成GUID
+     */
+    function guid(){
+        if (function_exists('com_create_guid')){
+            return strtolower(preg_replace( '/\{(.*)\}/', '',com_create_guid()));
+        }else{
+            mt_srand((double)microtime()*10000);//optional for php 4.2.0 and up.
+            $charid = strtoupper(md5(uniqid(rand(), true)));
+            $hyphen = chr(45);// "-"
+            $uuid = substr($charid, 0, 8).$hyphen
+                .substr($charid, 8, 4).$hyphen
+                .substr($charid,12, 4).$hyphen
+                .substr($charid,16, 4).$hyphen
+                .substr($charid,20,12);
+            return strtolower($uuid);
+        }
+    }
