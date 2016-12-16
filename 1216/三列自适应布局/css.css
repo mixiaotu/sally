@@ -1,0 +1,42 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#main{
+	background: #1abc9c;
+	width: 100%;
+}
+#left{
+	background: #16a085;
+	width: 350px;
+	margin-left: -100%;
+	position: relative;
+	right: 350px;
+}
+#right{
+	background: #14856d;
+	width: 250px;
+	margin-right: -250px;
+}
+.col{
+	float: left;
+	height: 500px;
+	color: #fff;
+	font-family: Georgia,"Times New Roman",Times, serif;
+	font-size: 23px;
+	line-height: 1.5;
+	padding: 30px 50px;
+	box-sizing: border-box;
+}
+.col img{
+	float: left;
+	margin: 20px;
+}
+#container{
+	padding-left: 350px;
+	padding-right: 250px;
+	/*margin: 0 250px 0 350px;*/
+}
+body{
+	min-width: 950px;
+}
