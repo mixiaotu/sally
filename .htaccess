@@ -5,7 +5,7 @@
 	RewriteCond %{REQUEST_URI} !^/login.php
 	RewriteCond %{REQUEST_URI} !^/logout.php
 	RewriteCond %{REQUEST_URI} !^/res
-	RewriteCond %{REQUEST_URI} !(.html|.js|.css|.jpg|.png|.gif|.bmp)$
+	RewriteCond %{REQUEST_URI} !(.html|.js|.css|.jpg|.png|.gif|.bmp|.woff|.ttf|.svg|.eot)$
 	RewriteRule ^(.*)$ /index.php?dir=$1 [L]
 
 </IfModule>

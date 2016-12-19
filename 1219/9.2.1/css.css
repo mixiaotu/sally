@@ -1,6 +1,6 @@
 @font-face{
 	font-family: 'icon-font';
-	src:url('font/flat-ui-icons-regular.eot'), url('font/flat-ui-icons-regular.svg'), url('font/flat-ui-icons-regular.ttf'), url('font/flat-ui-icons-regular.woff');
+	src:url('./font/flat-ui-icons-regular.eot'), url('./font/flat-ui-icons-regular.svg'), url('./font/flat-ui-icons-regular.ttf'), url('./font/flat-ui-icons-regular.woff');
 }
 body{
 	background: #666;
@@ -36,6 +36,6 @@ a::after{
 	transition: all .5s;
 	-webkit-transition: all .5s;
 }
-a::hover::after{
+a:hover::after{
 	right: 5%;
 }
