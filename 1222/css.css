@@ -1,0 +1,121 @@
+@font-face{
+	font-family: 'icon-font';
+	src:url('./font/flat-ui-icons-regular.eot'), url('./font/flat-ui-icons-regular.svg'), url('./font/flat-ui-icons-regular.ttf'), url('./font/flat-ui-icons-regular.woff');
+}
+body{
+	background: #555;
+}
+.close{
+	font-size: 0;
+	cursor: pointer;
+	display: block;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	border-radius: 50%;
+	background: #fff;
+	color: #8b8ab3;
+	text-align: center;
+}
+.close::before{
+	content:"\e609";
+	font-family: 'icon-font';
+	speak: none;
+	font-size: 48px;
+	display: block;
+}
+.close:hover::before{
+/*	transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	transition: transform 1s linear;
+	-webkit-transition: -webkit-transform 1s linear;*/
+	animation: spin 1s linear 1s 2 alternate;
+	-webkit-animation: spin 1s linear 1s 2 alternate;
+}
+@-webkit-keyframes spin {
+	from{
+		-webkit-transform: rotate(0deg);
+	}
+	to{
+		-webkit-transform: rotate(360deg);
+	}
+}
+@keyframes spin{
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+.icon{
+	font-size: 0;
+	cursor: pointer;
+	display: block;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	border-radius: 50%;
+	background: #fff;
+	color: #8b8ab3;
+	text-align: center;
+	display: inline-block;
+	margin-right: 20px;
+	-webkit-animation:move 1s;
+	animation:move 1s;
+}
+@-webkit-keyframes move{
+	from{
+		opacity: 0;
+		-webkit-transform: translateY(100%);
+	}
+	to{
+		opacity: 1;
+		-webkit-transform: translateY(0%);
+	}
+}
+@keyframes move{
+	from{
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+.home::before{
+	content:"\e62e";
+	font-family: 'icon-font';
+	speak: none;
+	font-size: 48px;
+	display: block;
+}
+.search::before{
+	content:"\e630";
+	font-family: 'icon-font';
+	speak: none;
+	font-size: 48px;
+	display: block;
+}
+.user::before{
+	content:"\e631";
+	font-family: 'icon-font';
+	speak: none;
+	font-size: 48px;
+	display: block;
+}
+.mail::before{
+	content:"\e632";
+	font-family: 'icon-font';
+	speak: none;
+	font-size: 48px;
+	display: block;
+}
+.chat::before{
+	content:"\e62d";
+	font-family: 'icon-font';
+	speak: none;
+	font-size: 48px;
+	display: block;
+}
