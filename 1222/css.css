@@ -61,8 +61,10 @@ body{
 	text-align: center;
 	display: inline-block;
 	margin-right: 20px;
-	-webkit-animation:move 1s;
-	animation:move 1s;
+	-webkit-animation:move 1s cubic-bezier(.62,-0.91,.45,1.97);
+	animation:move 1s cubic-bezier(.62,-0.91,.45,1.97);
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
 }
 @-webkit-keyframes move{
 	from{
@@ -118,4 +120,24 @@ body{
 	speak: none;
 	font-size: 48px;
 	display: block;
+}
+.home{
+	-webkit-animation-delay: 0s;
+	animation-delay: 0;
+}
+.search{
+	-webkit-animation-delay: .1s;
+	animation-delay: .1;
+}
+.user{
+	-webkit-animation-delay: .2s;
+	animation-delay: .2;
+}
+.mail{
+	-webkit-animation-delay: .3s;
+	animation-delay: .3;
+}
+.chat{
+	-webkit-animation-delay: .4s;
+	animation-delay: .4;
 }
