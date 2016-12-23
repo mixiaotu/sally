@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css2.css">
+</head>
+<body>
+	<article id="tablet">
+		<img src="tablet.png" alt="tablet">
+		<h1>Comprehensam</h1>
+		<p>nfiorde frejir ef  vf jivf h vf vfd nvife nvife orejoi mcdls ncx 98aew kl ioofdn mvl kvdou ifd vnlkfd sopvds okpgk ovfvfd vj  jvf pero  oof   ofo  opr kgpr kgre bkopr b jbro j oij igjitort jiot rjit </p>
+		<a href="#wifi">Next</a>
+	</article>
+	<article id="wifi">
+		<img src="wifi.png" alt="wifi">
+		<h1>Adversarium</h1>
+		<p>gfjrieo jf if ilgr jio;iort jitorp jrop jpor jgrpo gopr kogre opkgp  ;wf;4r,3 mgko9 nfewpmr;l jporn p,32 ije vf;d jiosg nd  hgufhg  hg a  yio  jpoaej  jfo  hid i vue u oir g igo </p>
+		<a href="#tablet">Next</a>
+	</article>
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('a').click(function(e){
+				e.preventDefault();
+				$('#tablet').toggleClass('move');
+				$('#wifi').toggleClass('move');
+			});
+		});
+	</script>
+</body>
+</html>
