@@ -1,0 +1,32 @@
+body{
+	background: #4ea980;
+	margin: 150px;
+}
+.loader{
+	text-indent: -9999em;
+	font-size: 20px;
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	position: relative;
+	box-shadow: -3em 2em 0 .5em #fff, 0 2em 0 0 #fff, 3em 2em 0 -.5em #fff;
+	animation: load-effect 1s infinite linear;
+	-webkit-animation: load effect 1s infinite linear;
+}
+@keyframes load-effect{
+	0%{
+		box-shadow: -3em 2em 0 .5em #fff, 0 2em 0 0 #fff, 3em 2em 0 -.5em #fff;
+	}
+	25%{
+		box-shadow: -3em 2em 0 0 #fff, 0 2em 0 -.5em #fff, 3em 2em 0 0 #fff;
+	}
+	50%{
+		box-shadow: -3em 2em 0 -.5em #fff, 0 2em 0 0 #fff, 3em 2em 0 .5em #fff;
+	}
+	75%{
+		box-shadow: -3em 2em 0 0 #fff, 0 2em 0 .5em #fff, 3em 2em 0 0 #fff;
+	}
+	100%{
+		box-shadow: -3em 2em 0 .5em #fff, 0 2em 0 0 #fff, 3em 2em 0 -.5em #fff;
+	}
+}
