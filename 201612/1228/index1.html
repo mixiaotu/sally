@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css1.css">
+</head>
+<body>
+	<div class="run">
+		<div id="frame1" class="run-pic"></div>
+		<div id="frame2" class="run-pic"></div>
+		<div id="frame3" class="run-pic"></div>
+		<div id="frame4" class="run-pic"></div>
+		<div id="frame5" class="run-pic"></div>
+		<div id="frame6" class="run-pic"></div>
+		<div id="frame7" class="run-pic"></div>
+		<div id="frame8" class="run-pic"></div>
+		<div id="frame9" class="run-pic"></div>
+		<div id="frame10" class="run-pic"></div>
+		<div id="frame11" class="run-pic"></div>
+		<div id="frame12" class="run-pic"></div>
+	</div>
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.run-pic').each(function(index){
+				$(this).hide(0).delay(index*100).show(0,loop);
+			});
+		});
+		function loop(){
+			$(this).delay(100).hide(0).delay(1100).show(0,loop);
+		}
+	</script>
+</body>
+</html>
