@@ -9,6 +9,8 @@
 	<canvas id="myCanvas" width="1000" height="600">Your browser does not support the Canvas element</canvas>
 	<script type="text/javascript">
 		var canvas = document.getElementById("myCanvas");
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
 		var context = canvas.getContext("2d");
 		var particles = [];
 		for(var i = 0; i<500; i++ ){
