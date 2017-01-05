@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			background: #45a7e2;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			border: 5px solid #fff;
+			margin: 200px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script src="js/TweenMax.min.js"></script>
+	<script type="text/javascript">
+		TweenMax.to(box, 2, {borderRadius:"50%", repeat:-1});
+	</script>
+</body>
+</html>
