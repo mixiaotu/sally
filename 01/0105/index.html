@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css.css">
+</head>
+<body>
+	<img src="image/shuttle.png" alt="shuttle">
+	<script src="js/TweenMax.min.js"></script>
+	<script type="text/javascript">
+		TweenMax.to(shuttle, 1, {top:'50%', left:250, rotation:90, delay:1, ease:Back.easeOut, onComplete:completeHandler});
+		function completeHandler(e){
+			TweenMax.to(shuttle,2,{left:'100%',scale:.2,opacity:0,ease:Back.easeIn});
+		}
+	</script>
+</body>
+</html>
