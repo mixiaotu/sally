@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background: #2ecc71;
+			margin:200px;
+		}
+		.close{
+			font-size: 0;
+			display: block;
+		}
+		.close::before, .close::after{
+			content: '';
+			width: 50px;
+			height: 2px;
+			background: #fff;
+			display: block;
+		}
+		.close::after{
+			transform: translateY(-2px) rotate(-45deg);
+			-webkit-transform: translateY(-2px) rotate(-45deg) ;
+		}
+		.close::before{
+			transform: rotate(45deg);
+			-webkit-transform:rotate(45deg);
+		}
+		a{
+			text-indent: #9999em;
+			display: block;
+			width: 40px;
+			height: 40px;
+			background: #333;
+			border-radius: 3px;
+			position: relative;
+
+		/*	color: #999;
+			text-indent:1.2em;
+			font-size: 32px;
+			line-height: 1;*/
+			margin: -15px 200px;
+		}
+		a::after{
+			content: '';
+			position: absolute;
+			width: 22px;
+			box-shadow: 0 10px 0 2px #fff, 0 20px 0 2px #fff, 0 30px 0 2px #fff;
+			left: 9px;
+			top: 0px;
+		}
+		a:hover{
+			background: #666;
+		}
+		/*a:hover::after{
+			box-shadow: 0 10px 0 2px #000, 0 20px 0 2px #000, 0 30px 0 2px #000;
+		}*/
+	</style>
+</head>
+<body>
+	<span class="close">Close me</span>
+	<a href=""></a>
+</body>
+</html>
