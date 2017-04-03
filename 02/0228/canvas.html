@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="600" height="400"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("myCanvas");
+		var context = canvas.getContext("2d");
+		context.strokeStyle = '#e74c3c';
+		context.lineWidth = 5;
+		context.moveTo(100,100);
+		context.lineTo(200,200);
+		context.stroke();
+		context.strokeRect(250,100,100,100);
+		context.beginPath();
+		context.arc(450,150,50,0,Math.PI*2);
+		context.closePath();
+		context.stroke();
+		context.fullStyle = "#000";
+		context.fill();
+	</script>
+</body>
+</html>
