@@ -18,6 +18,7 @@
         if($response['code'] != 0){
             returnMsg(-1,"粗错咯，邮箱或者密码不对～");
         }
+        $user = $response['data'];
         // 验证项目权限
         $url = "https://coding.net/api/user/msally/project/sally";
         $response = http("get",$url,null,$cookie);
@@ -25,7 +26,6 @@
         if($response['code'] != 0){
             returnMsg(-1,"粗错咯，您没有登录项目的权限～");
         }
-        $user = $response['data'];
         if(substr($user['avatar'],0,4) != "http"){
             $user['avatar'] = "https://coding.net".$user['avatar'];
         }
