@@ -23,7 +23,8 @@
             $user['avatar'] = "https://coding.net".$user['avatar'];
         }
         session('user',$user);
-        $url = "https://coding.net/api/user/banshan/project/sally";
+        $url = "https://coding.net/api/user/msally/project/sally";
+        $response = http("get",$url,null,$cookie);
         $response = json_decode(http("get",$url,null,$cookie),true);
         if($response['code'] == 0){
             session('isauth',1);
