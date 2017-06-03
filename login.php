@@ -18,17 +18,19 @@
         if($response['code'] != 0){
             returnMsg(-1,"粗错咯，邮箱或者密码不对～");
         }
+        // 验证项目权限
+        $url = "https://coding.net/api/user/msally/project/sally";
+        $response = http("get",$url,null,$cookie);
+        $response = json_decode(http("get",$url,null,$cookie),true);
+        if($response['code'] != 0){
+            returnMsg(-1,"粗错咯，您没有登录项目的权限～");
+        }
         $user = $response['data'];
         if(substr($user['avatar'],0,4) != "http"){
             $user['avatar'] = "https://coding.net".$user['avatar'];
         }
         session('user',$user);
-        $url = "https://coding.net/api/user/msally/project/sally";
-        $response = http("get",$url,null,$cookie);
-        $response = json_decode(http("get",$url,null,$cookie),true);
-        if($response['code'] == 0){
-            session('isauth',1);
-        }
+        session('isauth',1);
         returnMsg($response['code'],$response['msg']['permission_denied']);
     }
 ?>
