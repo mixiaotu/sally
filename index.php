@@ -142,9 +142,10 @@
                                             $filemtime = date("Y-m-d H:i:s",filemtime($path));
                                             $filectime = date("Y-m-d",filemtime($path));
                                             $fileperms = fileperms($path);
+                                            $filepath =  $_GET['dir'] ? '/'.$_GET['dir'].'/'.$file : $file;
                                             if(is_dir($path)){
                                     ?>
-                                        <tr class="file-item" data-val="<?= '/'.$_GET['dir'].'/'.$file?>" data-type="dir">
+                                        <tr class="file-item" data-val="<?= $filepath ?>" data-type="dir">
                                             <td class="icon">
                                                 <i class="folder icon"></i>
                                             </td>
@@ -177,7 +178,7 @@
                                     <?php
                                             }else{
                                     ?>
-                                        <tr class="file-item" data-val="<?= '/'.$_GET['dir'].'/'.$file?>" data-type="file">
+                                        <tr class="file-item" data-val="<?= $filepath ?>" data-type="file">
                                             <td class="icon">
                                                 <i class="file outline icon"></i>
                                             </td>
