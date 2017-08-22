@@ -1,5 +1,6 @@
 <?php
     include_once("./lib/init.php");
+    ini_set("display_errors", 0);
     if(session("isauth") != 1){
         redirect("/login.php");
     }
@@ -63,7 +64,7 @@
                                     <div class="divider">/</div>
                                     <?php 
                                         $prearr = explode("/",rtrim($_GET['dir'],'/'));
-                                        $_pre = "";
+                                        $_pre = [];
                                         foreach ($prearr as $key => $prepath) {
                                             if($key == count($prearr)-1){
                                     ?>
@@ -143,7 +144,7 @@
                                             $fileperms = fileperms($path);
                                             if(is_dir($path)){
                                     ?>
-                                        <tr class="file-item" data-val="<?php echo $file?>" data-type="dir">
+                                        <tr class="file-item" data-val="<?= '/'.$_GET['dir'].'/'.$file?>" data-type="dir">
                                             <td class="icon">
                                                 <i class="folder icon"></i>
                                             </td>
@@ -176,7 +177,7 @@
                                     <?php
                                             }else{
                                     ?>
-                                        <tr class="file-item" data-val="<?php echo $file?>" data-type="file">
+                                        <tr class="file-item" data-val="<?= '/'.$_GET['dir'].'/'.$file?>" data-type="file">
                                             <td class="icon">
                                                 <i class="file outline icon"></i>
                                             </td>
