@@ -12,26 +12,20 @@
         if(!$account || !$password){
             die;
         }
-        $url = "https://coding.net/api/v2/account/login?account={$account}&password=".sha1($password);
+        $url = "https://ucenter.lerzen.com/api/v1/auth/login";
         $cookie = "sid=".guid();
-        $response = json_decode(http("post",$url,null,$cookie),true);
-        if($response['code'] != 0){
-            returnMsg(-1,"粗错咯，邮箱或者密码不对～");
+        $data = ['email'=>$account, 'password'=>$password];
+        $response = json_decode(http("post",$url,$data,$cookie),true);
+        if($response['code'] != 200){
+            returnMsg($response['code'],"粗错咯，邮箱或者密码不对～");
         }
         $user = $response['data'];
-        // 验证项目权限
-        $url = "https://coding.net/api/user/msally/project/sally";
-        $response = http("get",$url,null,$cookie);
-        $response = json_decode(http("get",$url,null,$cookie),true);
-        if($response['code'] != 0){
-            returnMsg(-1,"粗错咯，您没有登录项目的权限～");
-        }
         if(substr($user['avatar'],0,4) != "http"){
-            $user['avatar'] = "https://coding.net".$user['avatar'];
+            $user['avatar'] = "https://ucenter.lerzen.com".$user['avatar'];
         }
         session('user',$user);
         session('isauth',1);
-        returnMsg($response['code'],$response['msg']['permission_denied']);
+        returnMsg($response['code'], '登录成功');
     }
 ?>
 <!DOCTYPE html>
@@ -105,7 +99,7 @@
                         .then(function(response){
                             var msg = response.data;
                             _logindom.removeClass("loading");
-                            if(msg.result == 0){
+                            if(msg.result == 200){
                                 window.location.href = "/index.php";
                             }else{
                                 vm.islogin = false;
