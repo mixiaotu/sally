@@ -10,7 +10,7 @@ if ($uri !~ "^/logout.php"){
 if ($uri !~ "^/res"){
 	set $rule_0 4$rule_0;
 }
-if ($uri !~ "(.html|.js|.css|.jpg|.png|.gif|.bmp|.woff|.ttf|.svg|.eot|.ico)$"){
+if ($uri !~ "(.html|.js|.css|.jpg|.png|.gif|.bmp|.woff|.ttf|.svg|.eot|.ico|.md)$"){
 	set $rule_0 5$rule_0;
 }
 if ($rule_0 = "54321"){
